@@ -7,7 +7,7 @@ export default function Navigation(props) {
   return (
     <nav className={`h-full w-[260px] bg-gray-40 ${isShow ? "" : "hidden"} `}>
       {/* <nav className="{`h-full w-[260px] bg-gray-40  `}"> */}
-      <Button onClick={() => setIsShow(!isShow)}> 导航</Button>
+      <Button onclick={() => setIsShow(!isShow)}> 导航</Button>
     </nav>
   );
 }
