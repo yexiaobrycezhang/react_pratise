@@ -37,3 +37,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 
 要注意安装组件 npm i react-icons
+
+如果 git push 报错的话，
+检查是不是在目录 D:\e\临时文件\github_react\react_pratise
