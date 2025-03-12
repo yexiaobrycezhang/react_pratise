@@ -1,6 +1,5 @@
-import { EXPORT_DETAIL } from "next/dist/shared/lib/constants";
 import { createContext } from "react";
 
-const ShowNavContext = createContext('');
+export const ShowNavContext = createContext(false);
 
-export default ShowNavContext;
+// export default  ShowNavContext;
