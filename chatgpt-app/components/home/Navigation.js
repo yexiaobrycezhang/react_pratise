@@ -12,7 +12,10 @@ export default function Navigation(props) {
       } `}
     >
       <div className="ml-[4px] w-[185px] sp">新建对话</div>
-      <button className=" w-[5px] h-10 " onClick={() => setShow(!show)}>
+      <button
+        className=" w-[5px] h-10 "
+        onClick={() => context.setShow(!context.show)}
+      >
         <LuPanelLeft className="w-9 h-9" />
       </button>
     </div>
