@@ -7,10 +7,7 @@ export default function Main() {
   return (
     <main className="flex bg-gray-500 w-full">
       <div>
-        <button
-          className={`w-[5px] h-10  ${!context.show ? "" : "hidden"}`}
-          onClick={() => context.setShow(!context.show)}
-        >
+        <button className={`w-[5px] h-10  `}>
           <LuPanelLeft className="w-9 h-9" />
         </button>
         <div>主题内容</div>
