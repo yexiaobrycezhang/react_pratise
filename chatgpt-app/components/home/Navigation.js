@@ -7,11 +7,9 @@ export default function Navigation(props) {
 
   return (
     <div
-      className={`relative flex w-[240px]  bg-gray-40 ${
-        context.show ? "" : "hidden"
-      } `}
+      className={` flex w-[240px]  bg-gray-40 ${context.show ? "" : "hidden"} `}
     >
-      <div className="ml-[4px] w-[185px] sp">新建对话</div>
+      <div className="ml-[4px] w-[160px] sp">新建对话</div>
       <button
         className=" w-[5px] h-10 "
         onClick={() => context.setShow(!context.show)}
