@@ -2,11 +2,7 @@
 
 import Navigation from "@/components/home/Navigation";
 import Main from "@/components/home/Main";
-import { useState, useContext } from "react";
-import {
-  CommonReduce,
-  useCommonContext,
-} from "@/components/common/CommonReduce";
+import { useCommonContext } from "@/components/common/CommonReduce";
 export default function Home() {
   // const Context = useContext(ShowNavContext);
   // const { state, dispatch } = useCommonContext();
@@ -20,11 +16,10 @@ export default function Home() {
         <Main />
       </div>
     </ShowNavContext.Provider> */
-    <CommonReduce>
-      <div className={`h-full flex bg-green-50 `}>
-        <Navigation />
-        <Main />
-      </div>
-    </CommonReduce>
+
+    <div className={`h-full flex  ${object.state.themeMode}`}>
+      <Navigation />
+      <Main />
+    </div>
   );
 }

@@ -5,7 +5,7 @@ import { LuPanelLeft } from "react-icons/lu";
 export default function Main() {
   const context = useContext(ShowNavContext);
   return (
-    <main className="flex bg-gray-500 w-full">
+    <main className="flex bg-white w-full dark:text-gray-800">
       <div>
         <button className={`w-[5px] h-10  `}>
           <LuPanelLeft className="w-9 h-9" />

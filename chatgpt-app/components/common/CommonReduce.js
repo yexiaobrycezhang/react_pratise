@@ -1,9 +1,10 @@
+"use client";
 import { MdLightMode } from "react-icons/md";
 import { createContext, useReducer, useContext } from "react";
 
 const initialState = {
   show: false,
-  themeMode: "light",
+  themeMode: "dark",
 };
 
 export const CommonContext = createContext(null);
@@ -18,8 +19,9 @@ function chatGptReducer(state, action) {
   }
 }
 
-export function CommonReduce({ children }) {
+export default function CommonReduce({ children }) {
   const [state, dispatch] = useReducer(chatGptReducer, initialState);
+  console.log("state reducer", state);
   return (
     <CommonContext.Provider value={{ state, dispatch }}>
       {children}
