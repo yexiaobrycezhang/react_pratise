@@ -13,10 +13,16 @@ export const useCommonContext = () => useContext(CommonContext);
 function chatGptReducer(state, action) {
   switch (action.type) {
     case "UPDATE":
-      return { ...state, [action.fieldId]: action.filedValue };
+      let newState = { ...state, [action.fieldId]: action.fieldValue };
+      console.log("action", action);
+      console.log("newState", newState);
+      // return { ...state, [action.fieldId]: action.fieldValue };
+      return newState;
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
+  console.log("action", action);
+  console.log("state", state);
 }
 
 export default function CommonReduce({ children }) {

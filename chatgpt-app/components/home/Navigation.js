@@ -1,14 +1,26 @@
 import { LuPanelLeft } from "react-icons/lu";
 import { ShowNavContext } from "@/components/common/ShowNavContext";
 import { MdLightMode, MdDarkMode, MdInfo } from "react-icons/md";
+import { useCommonContext } from "@/components/common/CommonReduce";
 
 export default function Navigation(props) {
   // const context = useContext(ShowNavContext);
+  const { state, dispatch } = useCommonContext();
+  console.log("state", state);
 
   return (
-    <div className={` relative flex w-[240px]  bg-gray-600 `}>
+    <div
+      className={` relative flex w-[240px]  bg-gray-600 ${
+        state.show ? "hidden" : ""
+      }`}
+    >
       <div className="ml-[4px] w-[160px] sp">新建对话</div>
-      <button className=" w-[5px] h-10 ">
+      <button
+        className=" w-[5px] h-10 "
+        onClick={() =>
+          dispatch({ type: "UPDATE", fieldId: "show", fieldValue: !state.show })
+        }
+      >
         <LuPanelLeft className="w-9 h-9" />
       </button>
       <div className="absolute bottom-20 left-3">
