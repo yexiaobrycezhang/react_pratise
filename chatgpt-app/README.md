@@ -40,3 +40,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 如果 git push 报错的话，
 检查是不是在目录 D:\e\临时文件\github_react\react_pratise
+
+参考 代码 
+https://github.com/zhixingxiaoke/react-hands-on-tutorial-for-beginners
