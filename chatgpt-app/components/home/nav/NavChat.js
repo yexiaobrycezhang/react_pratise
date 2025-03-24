@@ -16,7 +16,7 @@ export default function NavChat() {
             {item[1].map((chat, index) => (
               <li
                 key={chat.id}
-                className={`my-2   my-3 relavtive
+                className={`my-2   my-3 relavtive tracking-[0.05em]
                   hover:bg-gray-400 cursor-pointer flex items-center
                   ${selectedItem?.id === chat.id ? "bg-gray-400" : ""}`}
                 onClick={() => setSelectedItem(chat)}
