@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { LuPanelLeft } from "react-icons/lu";
 import { useCommonContext } from "@/components/common/CommonReduce";
+import MainOne from "@/components/home/main/MainOne.js";
+import MainTwo from "@/components/home/main/MainTwo.js";
 
 export default function Main() {
   const { state, dispatch } = useCommonContext();
   return (
-    <main className="flex bg-white w-full dark:text-gray-1000">
+    <main className="bg-white w-full dark:text-gray-1000 text-center">
       <div>
         <button
           className={`w-[5px] h-10  ${!state.show ? "hidden" : ""}`}
@@ -19,7 +21,10 @@ export default function Main() {
         >
           <LuPanelLeft className="w-9 h-9" />
         </button>
-        <div>主题内容</div>
+      </div>
+      <div className="flex flex-col w-full items-center">
+        <MainOne />
+        <MainTwo />
       </div>
     </main>
   );
