@@ -43,3 +43,14 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 参考 代码 
 https://github.com/zhixingxiaoke/react-hands-on-tutorial-for-beginners
+
+
+安装组件
+npm i react-textarea-autosize
+
+安装 第三方 markdown 组件
+npm i react-markdown
+
+安装 组件
+npm i remark-gfm
+npm i react-syntax-highlighter
