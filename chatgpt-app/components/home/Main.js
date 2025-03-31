@@ -23,7 +23,7 @@ export default function Main() {
           <LuPanelLeft className="w-9 h-9" />
         </button>
       </div>
-      <div className="flex flex-col w-full items-center overflow-y-auto">
+      <div className="flex flex-col w-full items-center ">
         <MainOne />
         <MainTwo />
         {/* <MainThree /> */}
