@@ -1,13 +1,17 @@
 import TextareaAutoSize from "react-textarea-autosize";
 export default function ChatInput() {
   return (
-    <div className="w-full mt-2 !h-[100x] absolute bottom-0  ">
-      {/* <div>this is chat input</div> */}
-      <TextareaAutoSize
-        placeholder="请输入一条信息"
-        className="w-3/4 h-full bg-transparent text-black rounded-lg border-1"
-        rows={1}
-      />
+    <>
+      <div className="flex  items-end w-4/5 border border-black/10 rounded-xl px-[50px]">
+        {/* <div>this is chat input</div> */}
+        <TextareaAutoSize
+          placeholder="请输入一条信息"
+          className="outline-none flex-1 max-h-64 mb-1.5 bg-transparent text-black
+         dark:text-white resize-none border-0"
+          rows={1}
+        />
+        <button>发送</button>
+      </div>
       <footer className="text-[14px] text-gray-700">
         ©️2025{" "}
         <a
@@ -19,7 +23,7 @@ export default function ChatInput() {
         </a>
         基于第三方提供的接口
       </footer>
-    </div>
+    </>
   );
 }
 

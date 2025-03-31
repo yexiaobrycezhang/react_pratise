@@ -14,7 +14,7 @@ export default function MessageList() {
                ${!isUser && "bg-gray-100"}`}
           >
             <span> {isUser ? "😊" : <SiOpenai />}</span>
-            <span>{item.content}</span>
+            <span className="flex-1">{item.content}</span>
           </div>
         );
       })}
