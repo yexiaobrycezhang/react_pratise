@@ -54,3 +54,6 @@ npm i react-markdown
 安装 组件
 npm i remark-gfm
 npm i react-syntax-highlighter
+
+安装 生成 uuid
+npm i uuid

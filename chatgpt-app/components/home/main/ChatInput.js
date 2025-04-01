@@ -1,5 +1,69 @@
 import TextareaAutoSize from "react-textarea-autosize";
+import { useState } from "react";
+import { useCommonContext } from "@/components/common/CommonReduce.js";
+import { v4 as uuidv4 } from "uuid";
 export default function ChatInput() {
+  const [message, setMessage] = useState("");
+
+  const context = useCommonContext();
+  const {
+    state: { messageList, currentModel, streamingId },
+    dispatch,
+  } = context;
+
+  async function send() {
+    const message = {
+      id: uuidv4(),
+      role: "user",
+      content: message,
+    };
+    const messages = messageList.concat([message]);
+    dispatch({ type: "ADD_MESSAGE", message });
+    console.log("send  message === ", message);
+    const body = JSON.stringify({ messageText: message });
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body,
+    });
+
+    if (!response.ok) {
+      console.log(response.statusText);
+      return;
+    }
+    if (!response.body) {
+      console.log("body error");
+      return;
+    }
+
+    const responseMessage = {
+      id: uuidv4(),
+      role: "assistant",
+      content: "",
+    };
+
+    dispatch({ type: "ADD_MESSAGE", message: responseMessage });
+
+    dispatch({
+      type: "UPDATE_MESSAGE",
+      field: "streamingId",
+      value: responseMessage.id,
+    });
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let done = false;
+    while (!done) {
+      const result = await reader.read();
+      done = result.done;
+      const chunk = decoder.decode(result.vlaue);
+      console.log(chunk);
+    }
+    setMessage("");
+  }
+
   return (
     <>
       <div className="flex  items-end w-4/5 border border-black/10 rounded-xl px-[50px]">
@@ -9,8 +73,12 @@ export default function ChatInput() {
           className="outline-none flex-1 max-h-64 mb-1.5 bg-transparent text-black
          dark:text-white resize-none border-0"
           rows={1}
+          value={message}
+          onChange={(e) => {
+            setMessage(e.target.value);
+          }}
         />
-        <button>发送</button>
+        <button onClick={send}>发送</button>
       </div>
       <footer className="text-[14px] text-gray-700">
         ©️2025{" "}
