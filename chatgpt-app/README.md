@@ -63,3 +63,6 @@ npm install prisma --save-dev
 执行 prisma  初始化命令
 npx prisma init
 安装 prisma  插件
+
+
+test test
