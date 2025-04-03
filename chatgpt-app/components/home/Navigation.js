@@ -36,7 +36,7 @@ export default function Navigation(props) {
         </div>
 
         <div className="bottom-20 left-3 h-[15%]">
-          <button>dd</button>
+          <button>chage themeMode</button>
         </div>
       </div>
     </div>

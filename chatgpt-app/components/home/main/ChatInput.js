@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useCommonContext } from "@/components/common/CommonReduce.js";
 import { v4 as uuidv4 } from "uuid";
 export default function ChatInput() {
-  const [message, setMessage] = useState("");
+  const [messageText, setMessage] = useState("");
 
   const context = useCommonContext();
   const {
@@ -15,12 +15,12 @@ export default function ChatInput() {
     const message = {
       id: uuidv4(),
       role: "user",
-      content: message,
+      content: messageText,
     };
     const messages = messageList.concat([message]);
     dispatch({ type: "ADD_MESSAGE", message });
     console.log("send  message === ", message);
-    const body = JSON.stringify({ messageText: message });
+    const body = JSON.stringify({ messages });
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: {
@@ -47,21 +47,32 @@ export default function ChatInput() {
     dispatch({ type: "ADD_MESSAGE", message: responseMessage });
 
     dispatch({
-      type: "UPDATE_MESSAGE",
+      type: "UPDATE",
       field: "streamingId",
       value: responseMessage.id,
     });
 
     const reader = response.body.getReader();
-    const decoder = new TextDecoder();
+    const decoder = new TextDecoder("utf-8");
     let done = false;
+    let content = "";
     while (!done) {
       const result = await reader.read();
       done = result.done;
-      const chunk = decoder.decode(result.vlaue);
+      const chunk = decoder.decode(result.vlaue, { stream: true });
       console.log(chunk);
+      console.log("chunk ====  ", chunk);
+      content += chunk;
+      dispatch({
+        type: "UPDATE_MESSAGE",
+        message: { ...responseMessage, content },
+      });
     }
-    setMessage("");
+    dispatch({
+      type: "UPDATE",
+      field: "streamingId",
+      value: "",
+    });
   }
 
   return (
@@ -73,7 +84,7 @@ export default function ChatInput() {
           className="outline-none flex-1 max-h-64 mb-1.5 bg-transparent text-black
          dark:text-white resize-none border-0"
           rows={1}
-          value={message}
+          value={messageText}
           onChange={(e) => {
             setMessage(e.target.value);
           }}

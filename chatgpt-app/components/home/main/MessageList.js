@@ -1,10 +1,12 @@
 import { list } from "@/components/data/MessageDataList.js";
 import { SiOpenai } from "react-icons/si";
+import { useCommonContext } from "@/components/common/CommonReduce.js";
 export default function MessageList() {
+  const context = useCommonContext();
   return (
     <div className="h-[480px]   px-[140px] flex-col justify-start overflow-y-auto">
-      {list.map((item) => {
-        const isUser = item.role === "user";
+      {context.state.messageList.map((item) => {
+        const isUser = item?.role === "user";
         return (
           <div
             key={item.id}
