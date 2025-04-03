@@ -64,4 +64,4 @@ npm install prisma --save-dev
 npx prisma init
 安装 prisma  插件 111
 
-test test
+test test 4343
